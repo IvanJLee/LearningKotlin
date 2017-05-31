@@ -66,8 +66,21 @@ fun main(args: Array<String>) {
 
     //string templates
     stringTemplates()
+
     //conditional expressions
     conditionalExpressions(3, 4)
+
+    //nullable values and checking for null
+    println("Using nullable values:")
+    printProduct("6", "7")
+    printProduct("a", "7")
+    printProduct("a", "b")
+    println()
+
+    //type checks and automatic casts
+    println("type checks and automatic casts:")
+    println(getArgumentTypeAndLength(10))
+    println(getArgumentTypeAndLength("kotlin"))
 }
 
 /**
@@ -99,6 +112,44 @@ fun stringTemplates() {
 fun conditionalExpressions(a : Int, b: Int) {
     println("conditional expressions: ")
     val c = if (a > b) a else b
-    print("c = $c")
+    println("c = $c")
     println()
+}
+
+/**
+ * A reference must be explicitly marked as nullable when null value is possible.
+ */
+fun parseInt(str: String): Int? {
+    try {
+        return if(str == "") str.toInt() else null
+    } catch (e : Exception) {
+        return null
+    }
+}
+
+fun printProduct(arg1: String, arg2: String) {
+    val x = parseInt(arg1)
+    val y = parseInt(arg2)
+
+    // Using `x * y` yields error because they may hold nulls.
+    if (x != null && y != null) {
+        // x and y are automatically cast to non-nullable after null check
+        println(x * y)
+    } else {
+        println("either '$arg1' or '$arg2' is not a number")
+    }
+}
+
+/**
+ * Using type checks and automatic casts
+ */
+fun getArgumentTypeAndLength(obj : Any) : String {
+    if (obj is Int) {
+        //obj is cast to Int automatic
+        return "Integer: " + obj
+    } else if (obj is String) {
+        return "String: " + obj.length
+    } else {
+        return "Unknown"
+    }
 }
