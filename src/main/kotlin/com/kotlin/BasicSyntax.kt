@@ -41,4 +41,23 @@ fun main(args: Array<String>) {
     println("sum2: 3 + 4 = " + sum2(3,4))
     log("function with Unit returning type")
     log2("function with no returning type")
+
+    //local variables, Assign-once(read-only) variable
+    val a : Int = 3
+    val b = 3
+    val c : Int
+    c = 3
+    print("a = " + a )
+    print("b = " + b )
+    print("c = " + c )
+
+    //mutable variables
+    var x : Int = 4
+    var y = 5
+    val z : Int
+    z = 6
+    print("x = " + x )
+    print("y = " + y )
+    print("z = " + z )
+
 }
