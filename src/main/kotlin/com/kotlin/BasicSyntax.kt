@@ -41,23 +41,44 @@ fun main(args: Array<String>) {
     println("sum2: 3 + 4 = " + sum2(3,4))
     log("function with Unit returning type")
     log2("function with no returning type")
+    funDefineBelowMain()
 
     //local variables, Assign-once(read-only) variable
     val a : Int = 3
     val b = 3
     val c : Int
     c = 3
-    print("a = " + a )
-    print("b = " + b )
-    print("c = " + c )
+    println("a = " + a )
+    println("b = " + b )
+    println("c = " + c )
 
     //mutable variables
     var x : Int = 4
     var y = 5
     val z : Int
     z = 6
-    print("x = " + x )
-    print("y = " + y )
-    print("z = " + z )
+    println("x = " + x )
+    println("y = " + y )
+    println("z = " + z )
 
+    //string templates
+    stringTemplates()
+}
+
+/**
+ * Function definition below main() is correct, which is different from many other languages like C or Python.
+ */
+fun funDefineBelowMain(): Unit {
+    println("function defined below main() is correct, which is different from C")
+}
+
+/**
+ * In a string, variables followed after '$' will be replaced with its value. In another case, expressions surrounded with '{}' can be placed after '$'.
+ */
+fun stringTemplates() {
+    var a = 1
+    val str = "a is $a"
+    a = 2
+    val s = "${str.replace("is", "was")} , but now is $a"
+    println(s)
 }
