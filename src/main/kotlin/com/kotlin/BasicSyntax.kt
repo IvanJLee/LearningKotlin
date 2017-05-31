@@ -84,7 +84,22 @@ fun main(args: Array<String>) {
     println()
 
     //loop
+    print("Loops:")
     loop()
+    println()
+
+    //use when expression
+    print("when expression:")
+    println(whenExpression(1))
+    println(whenExpression(1.0))
+    println(whenExpression(1.0f))
+    println(whenExpression("kotlin"))
+    println()
+
+    //range usage
+    println("range usage:")
+    range()
+    println()
 }
 
 /**
@@ -170,14 +185,53 @@ fun loop() {
     println()
     //the other form of for each loop
     for (index in list.indices) {
-        print("${list[index]}")
+        print(list[index] + ", ")
     }
     println()
 
     //while loop, the same as Java
     var index = 0
     while (index < list.size) {
-        println("${list[index]}")
+        print(list[index] + ", ")
         index ++
     }
 }
+
+/**
+ * The when expression is similar to Java's switch, but it is more flexible than switch. See the usage below.
+ */
+fun whenExpression(arg: Any) : String {
+    return when(arg) {
+        1           -> "One"
+        is Double   -> "Double"
+        !is String  -> "not String"
+        else        -> "Something else"
+    }
+}
+
+/**
+ * The Range is similar to Python's range function, but there are differences. See the usage below.
+ */
+fun range() {
+    for (i in 1 .. 10) {
+        print("$i, ")
+    }
+    println()
+    for (i in 10 downTo 1) {
+        print("$i, ")
+    }
+    println()
+    for (i in 0 .. 30 step 3) {
+        print("$i, ")
+    }
+    println()
+
+    val list = listOf("a", "b", "c")
+    if (-1 !in 0..list.lastIndex) {
+        println("-1 is out of range")
+    }
+    if (list.size !in list.indices) {
+        println("list size is out of valid list indices range too")
+    }
+}
+
