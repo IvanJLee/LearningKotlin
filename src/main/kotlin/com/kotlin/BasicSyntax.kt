@@ -81,6 +81,10 @@ fun main(args: Array<String>) {
     println("type checks and automatic casts:")
     println(getArgumentTypeAndLength(10))
     println(getArgumentTypeAndLength("kotlin"))
+    println()
+
+    //loop
+    loop()
 }
 
 /**
@@ -151,5 +155,29 @@ fun getArgumentTypeAndLength(obj : Any) : String {
         return "String: " + obj.length
     } else {
         return "Unknown"
+    }
+}
+
+/**
+ * Loop in kotlin is quite different from Java. Here are the examples below
+ */
+fun loop() {
+    val list = listOf("Cupcake", "Donut", "Eclair", "Froyo", "GingerBread", "HoneyComb", "Ice Cream Sandwich", "Jelly Bean", "KitKat", "Lollipop", "Marshmallow", "Nougat")
+    // for each loop
+    for (element in list) {
+        print(element + ", ")
+    }
+    println()
+    //the other form of for each loop
+    for (index in list.indices) {
+        print("${list[index]}")
+    }
+    println()
+
+    //while loop, the same as Java
+    var index = 0
+    while (index < list.size) {
+        println("${list[index]}")
+        index ++
     }
 }
