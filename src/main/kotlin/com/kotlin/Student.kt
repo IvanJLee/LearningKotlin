@@ -8,7 +8,7 @@ package com.kotlin
  * @since   v1.0
  *
  */
-class Student : Person {
+class Student : Person, Greet {
     var major = "Computer Science"
     override var age = 20
 
@@ -19,6 +19,11 @@ class Student : Person {
     init {
         familyName = "Button"
         age = 19
+    }
+
+    override fun greet() {
+        super<Greet>.greet()
+        super<Person>.greet()
     }
 
     override fun sayHello() {

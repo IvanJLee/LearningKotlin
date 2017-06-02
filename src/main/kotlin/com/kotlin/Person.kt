@@ -35,8 +35,8 @@ open class Person constructor() {
         println("I was init with $givenName at age $age")
     }
 
-    fun greet() {
-        print("Hello, my name is $givenName $familyName. ")
+    open fun greet() {
+        print("My name is $givenName $familyName. ")
         println("I am $age years old, wights $weight kg.")
     }
 
