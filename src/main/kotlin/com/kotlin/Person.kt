@@ -15,8 +15,8 @@ package com.kotlin
 open class Person constructor() {
 
     var givenName = "Unnamed"
-    val familyName = "Smith"
-    var age = 0
+    var familyName = "Smith"
+    open var age = 0
     var weight = 0f
 
     constructor(name : String) : this() {
@@ -32,12 +32,16 @@ open class Person constructor() {
     }
 
     init {
-        println("I was init with $givenName at age age")
+        println("I was init with $givenName at age $age")
     }
 
     fun greet() {
         print("Hello, my name is $givenName $familyName. ")
-        println("I am $age years old, wights $weight kg.\n")
+        println("I am $age years old, wights $weight kg.")
+    }
+
+    open fun sayHello() {
+        greet()
     }
 
 }
