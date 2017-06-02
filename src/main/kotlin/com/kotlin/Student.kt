@@ -31,7 +31,3 @@ class Student : Person, Greet {
         println("I major in $major")
     }
 }
-
-fun main(args: Array<String>) {
-    Student().sayHello()
-}

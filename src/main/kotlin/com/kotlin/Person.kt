@@ -45,9 +45,3 @@ open class Person constructor() {
     }
 
 }
-
-fun main(args : Array<String>) {
-    Person("Jack").greet()
-    Person(20).greet()
-    Person(60.0F).greet()
-}
