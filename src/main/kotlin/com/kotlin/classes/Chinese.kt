@@ -1,4 +1,4 @@
-package com.kotlin
+package com.kotlin.classes
 
 /**
  * Chinese people

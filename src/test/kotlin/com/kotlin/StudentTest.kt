@@ -1,5 +1,7 @@
 package com.kotlin
 
+import com.kotlin.classes.Student
+
 /**
  * Student test
  *

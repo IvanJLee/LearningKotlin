@@ -1,4 +1,4 @@
-package com.kotlin
+package com.kotlin.basic
 
 /**
  * basic syntax

@@ -2,7 +2,7 @@ group 'Kotlin'
 version '0.1-alpha'
 
 buildscript {
-    ext.kotlin_version = '1.0.5'
+    ext.kotlin_version = '1.1.2'
 
     repositories {
         mavenCentral()
