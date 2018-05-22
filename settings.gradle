@@ -1,4 +1,5 @@
 rootProject.name = 'Learning'
 include 'kotlin'
 include 'kotlin'
+include 'design-pattern'
 
