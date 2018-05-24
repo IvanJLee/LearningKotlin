@@ -1,14 +1,8 @@
 package com.learning;
 
-import com.learning.strategy.duck.DecoyDuck;
-import com.learning.strategy.duck.Duck;
-import com.learning.strategy.duck.MallardDuck;
-import com.learning.strategy.duck.ModelDuck;
-import com.learning.strategy.duck.RedheadDuck;
-import com.learning.strategy.duck.RubberDuck;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.junit.runner.JUnitCore;
+import org.junit.runner.Result;
+import org.junit.runner.notification.Failure;
 
 /**
  * test class
@@ -20,23 +14,15 @@ import java.util.List;
 public class DesignPatternTest {
 
     public static void main(String[] args) {
-        DesignPatternTest test = new DesignPatternTest();
-        test.testDuck();
+        Result result = JUnitCore.runClasses(StrategyTest.class);
+
+        for (Failure failure : result.getFailures()) {
+            System.out.println(failure.toString());
+        }
+        System.out.println(result.wasSuccessful());
     }
 
-    private void testDuck() {
-        List<Duck> ducks = new ArrayList<>();
-        ducks.add(new DecoyDuck());
-        ducks.add(new MallardDuck());
-        ducks.add(new ModelDuck());
-        ducks.add(new RedheadDuck());
-        ducks.add(new RubberDuck());
-        for (Duck duck : ducks) {
-            duck.display();
-            duck.swim();
-            duck.performFly();
-            duck.performQuack();
-            System.out.println();
-        }
-    }
+
+
+
 }
