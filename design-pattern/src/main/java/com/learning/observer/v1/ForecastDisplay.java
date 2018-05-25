@@ -13,7 +13,7 @@ public class ForecastDisplay implements DisplayElement, Observer<WeatherData.Par
 
     @Override
     public void display() {
-        System.out.println("heat index: " + computeHeatIndex(params.temperature, 10));
+        System.out.println("heat index: " + computeHeatIndex(params.temperature, params.pressure));
     }
 
     @Override

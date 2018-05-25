@@ -20,10 +20,8 @@ public class CurrentConditionDisplay implements Observer<WeatherData.Params>, Di
     @Override
     public void display() {
         System.out.println("Current condition: ");
-        System.out.println("[temperature] : " + params.temperature + "˚F");
+        System.out.println("[temperature] : " + params.temperature + "˚C");
         System.out.println("[humidity]    : " + params.humidity + "%");
         System.out.println("[pressure]    : " + params.pressure + "MPa");
-        System.out.println();
-
     }
 }

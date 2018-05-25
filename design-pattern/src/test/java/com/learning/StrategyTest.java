@@ -7,8 +7,6 @@ import com.learning.strategy.duck.ModelDuck;
 import com.learning.strategy.duck.RedheadDuck;
 import com.learning.strategy.duck.RubberDuck;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -22,12 +20,7 @@ import java.util.List;
  * @since   v1.0
  */
 
-public class StrategyTest {
-
-    @Before
-    public void beforeTest() {
-        System.out.println("test Duck begin...");
-    }
+public class StrategyTest extends TestCase {
 
     @Test
     public void testDuck() {
@@ -44,10 +37,5 @@ public class StrategyTest {
             duck.performQuack();
             System.out.println();
         }
-    }
-
-    @After
-    public void afterTest() {
-        System.out.println("test Duck finished");
     }
 }

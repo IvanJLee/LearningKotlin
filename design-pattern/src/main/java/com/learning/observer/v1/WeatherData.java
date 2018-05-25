@@ -20,6 +20,7 @@ public class WeatherData implements Subject<WeatherData.Params> {
         if (observers == null) {
             observers = new ArrayList<>();
         }
+        observers.add(observer);
     }
 
     @Override
@@ -39,11 +40,24 @@ public class WeatherData implements Subject<WeatherData.Params> {
     public void setMeasurements(Params params) {
         this.params = params;
         notifyObserves();
+        System.out.println();
     }
 
-    static class Params {
+    public static class Params {
         float temperature;
         float humidity;
         float pressure;
+
+        public void setTemperature(float temperature) {
+            this.temperature = temperature;
+        }
+
+        public void setHumidity(float humidity) {
+            this.humidity = humidity;
+        }
+
+        public void setPressure(float pressure) {
+            this.pressure = pressure;
+        }
     }
 }

@@ -19,12 +19,13 @@ public class StatisticDisplay implements DisplayElement, Observer<WeatherData.Pa
         float min = pastTemperature.stream().min(Float::compare).get();
         float max = pastTemperature.stream().max(Float::compare).get();
         double average = pastTemperature.stream().mapToDouble(Float::doubleValue).average().getAsDouble();
-        System.out.println("min " + min + "˚F, max " + max + "˚F, average " + average + "˚F in past 8 hours.");
+        System.out.println("min " + min + "˚C, max " + max + "˚C, average " + average + "˚C in past 8 hours.");
     }
 
     @Override
     public void onDataChange(WeatherData.Params params) {
         addTemperature(params.temperature);
+        display();
     }
 
     private void addTemperature(float temperature) {

@@ -11,10 +11,13 @@ import org.junit.runner.notification.Failure;
  * @version v0.1
  * @since   v1.0
  */
-public class DesignPatternTest {
+public class DesignPatternTestRunner {
 
     public static void main(String[] args) {
-        Result result = JUnitCore.runClasses(StrategyTest.class);
+        Result result = JUnitCore.runClasses(
+//                StrategyTest.class,
+                ObserverTest.class
+        );
 
         for (Failure failure : result.getFailures()) {
             System.out.println(failure.toString());
