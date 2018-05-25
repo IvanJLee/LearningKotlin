@@ -1,4 +1,7 @@
-package com.learning.observer.v1;
+package com.learning.observer.v2;
+
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * display current condition
@@ -7,15 +10,9 @@ package com.learning.observer.v1;
  * @version v0.1
  * @since   v1.0
  */
-public class CurrentConditionDisplay implements Observer<WeatherData.Params>, DisplayElement {
+public class CurrentConditionDisplayV2 implements Observer, DisplayElementV2 {
 
-    private WeatherData.Params params;
-
-    @Override
-    public void onDataChange(WeatherData.Params params) {
-        this.params = params;
-        display();
-    }
+    private WeatherDataV2.Params params;
 
     @Override
     public void display() {
@@ -23,5 +20,11 @@ public class CurrentConditionDisplay implements Observer<WeatherData.Params>, Di
         System.out.println("[temperature] : " + params.temperature + "˚C");
         System.out.println("[humidity]    : " + params.humidity + "%");
         System.out.println("[pressure]    : " + params.pressure + "MPa");
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        params = (WeatherDataV2.Params) arg;
+        display();
     }
 }

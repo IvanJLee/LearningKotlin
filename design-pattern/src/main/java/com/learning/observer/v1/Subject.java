@@ -3,7 +3,7 @@ package com.learning.observer.v1;
 /**
  * Subject
  *
- * @author  lijun on 2018-05-24 23:13.
+ * @author  Ivan on 2018-05-24 23:13.
  * @version v0.1
  * @since   v1.0
  */
