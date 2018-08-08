@@ -15,8 +15,9 @@ public class DesignPatternTestRunner {
 
     public static void main(String[] args) {
         Result result = JUnitCore.runClasses(
-//                StrategyTest.class,
-                ObserverTest.class
+                StrategyTest.class,
+                ObserverTest.class,
+                DecoratorTest.class
         );
 
         for (Failure failure : result.getFailures()) {
