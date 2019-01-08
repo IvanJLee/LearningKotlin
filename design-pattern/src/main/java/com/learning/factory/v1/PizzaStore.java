@@ -1,6 +1,4 @@
-package com.learning.factory;
-
-import com.sun.istack.internal.NotNull;
+package com.learning.factory.v1;
 
 /**
  * Pizza Store
@@ -11,9 +9,9 @@ import com.sun.istack.internal.NotNull;
  */
 class PizzaStore {
 
-    private @NotNull SimplePizzaFactory factory;
+    private SimplePizzaFactory factory;
 
-    public PizzaStore(@NotNull SimplePizzaFactory factory) {
+    public PizzaStore(SimplePizzaFactory factory) {
         this.factory = factory;
     }
 

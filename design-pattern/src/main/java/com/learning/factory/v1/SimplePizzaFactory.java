@@ -1,6 +1,6 @@
-package com.learning.factory;
+package com.learning.factory.v1;
 
-import com.sun.istack.internal.Nullable;
+import jdk.internal.jline.internal.Nullable;
 
 /**
  * Simple Pizza factory
@@ -11,7 +11,8 @@ import com.sun.istack.internal.Nullable;
  */
 public class SimplePizzaFactory {
 
-    public @Nullable Pizza createPizza(String type) {
+    public @Nullable
+    Pizza createPizza(String type) {
         Pizza pizza = null;
         if ("cheese".equalsIgnoreCase(type)) {
             pizza = new CheesePizza();

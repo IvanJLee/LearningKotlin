@@ -1,4 +1,4 @@
-package com.learning.factory;
+package com.learning.factory.v1;
 
 /**
  * Greek Pizza
