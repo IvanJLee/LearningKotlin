@@ -1,5 +1,7 @@
 package com.kotlin.basic
 
+import java.awt.Rectangle
+
 /**
  * basic syntax
  *
@@ -91,12 +93,12 @@ fun main(args: Array<String>) {
     println()
 
     //loop
-    print("Loops:\n")
+    println("Loops:")
     loop()
     println()
 
     //use when expression
-    print("\nwhen expression:\n")
+    println("\nwhen expression:")
     println(whenExpression(1))
     println(whenExpression(1.0))
     println(whenExpression(1.0f))
@@ -107,6 +109,9 @@ fun main(args: Array<String>) {
     println("range usage:")
     range()
     println()
+
+    stream()
+
 }
 
 /**
@@ -244,3 +249,26 @@ fun range() {
     }
 }
 
+fun stream() {
+    val list = listOf("Cupcake", "Donut", "Eclair", "Froyo", "GingerBread", "HoneyComb", "Ice Cream Sandwich", "Jelly Bean", "KitKat", "Lollipop", "Marshmallow", "Nougat", "Oreo", "Pie")
+    list.filter { it[0] > 'K' }
+            .sortedBy { it }
+            .map { it[0] }
+            .forEach { print(it) }
+}
+
+@Suppress("UnnecessaryVariable")
+fun createInstance() : Any{
+    val rectangle = Rectangle(4, 3)
+    return rectangle
+}
+
+interface RectanglePrpperties {
+    val isSquare:Boolean
+}
+
+abstract class Shape(val sides: List<Double>) {
+    val perimeter: Double get() = sides.sum()
+
+    abstract fun calculateArea(): Double
+}
