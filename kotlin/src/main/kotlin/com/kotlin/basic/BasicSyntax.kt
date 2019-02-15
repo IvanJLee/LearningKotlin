@@ -1,5 +1,7 @@
 package com.kotlin.basic
 
+import java.awt.Rectangle
+
 /**
  * basic syntax
  *
@@ -10,7 +12,7 @@ package com.kotlin.basic
  */
 
 /**
- * Define a function to return the sun of two numbers.
+ * Define a function to return the sum of two numbers.
  */
 fun sum(n : Int, m : Int): Int {
     return n + m
@@ -35,6 +37,9 @@ fun log2(msg : String) {
     println(msg)
 }
 
+val PI = 3.1415926
+val NULL = 0
+
 fun main(args: Array<String>) {
     println("function definition: ")
     //functions
@@ -47,21 +52,25 @@ fun main(args: Array<String>) {
     println("\nvariables definition: ")
     //local variables, Assign-once(read-only) variable
     val a : Int = 3
-    val b = 3
+    val b = 4
     val c : Int
-    c = 3
-    println("a = " + a )
-    println("b = " + b )
-    println("c = " + c )
+    c = 5
+    println("a = $a")
+    println("b = $b")
+    println("c = $c")
+
+    //global variables
+    println("π = $PI")
+    println("NULL = $NULL")
 
     //mutable variables
     var x : Int = 4
     var y = 5
-    val z : Int
+    var z : Int
     z = 6
-    println("x = " + x )
-    println("y = " + y )
-    println("z = " + z )
+    println("x = $x")
+    println("y = $y")
+    println("z = $z")
     println()
 
     //string templates
@@ -84,12 +93,12 @@ fun main(args: Array<String>) {
     println()
 
     //loop
-    print("Loops:")
+    println("Loops:")
     loop()
     println()
 
     //use when expression
-    print("when expression:")
+    println("\nwhen expression:")
     println(whenExpression(1))
     println(whenExpression(1.0))
     println(whenExpression(1.0f))
@@ -100,6 +109,9 @@ fun main(args: Array<String>) {
     println("range usage:")
     range()
     println()
+
+    stream()
+
 }
 
 /**
@@ -138,12 +150,16 @@ fun conditionalExpressions(a : Int, b: Int) {
 /**
  * A reference must be explicitly marked as nullable when null value is possible.
  */
-fun parseInt(str: String): Int? {
+fun parseInt1(str: String): Int? {
     try {
         return if(str == "") str.toInt() else null
     } catch (e : Exception) {
         return null
     }
+}
+
+fun parseInt(str: String): Int? {
+    return str.toIntOrNull()
 }
 
 fun printProduct(arg1: String, arg2: String) {
@@ -163,13 +179,11 @@ fun printProduct(arg1: String, arg2: String) {
  * Using type checks and automatic casts
  */
 fun getArgumentTypeAndLength(obj : Any) : String {
-    if (obj is Int) {
-        //obj is cast to Int automatic
-        return "Integer: " + obj
-    } else if (obj is String) {
-        return "String: " + obj.length
-    } else {
-        return "Unknown"
+    return when (obj) {
+        is Int -> //obj is cast to Int automatic
+            "Integer: $obj"
+        is String -> "String: ${obj.length}"
+        else -> "Unknown"
     }
 }
 
@@ -177,10 +191,10 @@ fun getArgumentTypeAndLength(obj : Any) : String {
  * Loop in kotlin is quite different from Java. Here are the examples below
  */
 fun loop() {
-    val list = listOf("Cupcake", "Donut", "Eclair", "Froyo", "GingerBread", "HoneyComb", "Ice Cream Sandwich", "Jelly Bean", "KitKat", "Lollipop", "Marshmallow", "Nougat")
+    val list = listOf("Cupcake", "Donut", "Eclair", "Froyo", "GingerBread", "HoneyComb", "Ice Cream Sandwich", "Jelly Bean", "KitKat", "Lollipop", "Marshmallow", "Nougat", "Oreo", "Pie")
     // for each loop
     for (element in list) {
-        print(element + ", ")
+        print("$element, ")
     }
     println()
     //the other form of for each loop
@@ -235,3 +249,26 @@ fun range() {
     }
 }
 
+fun stream() {
+    val list = listOf("Cupcake", "Donut", "Eclair", "Froyo", "GingerBread", "HoneyComb", "Ice Cream Sandwich", "Jelly Bean", "KitKat", "Lollipop", "Marshmallow", "Nougat", "Oreo", "Pie")
+    list.filter { it[0] > 'K' }
+            .sortedBy { it }
+            .map { it[0] }
+            .forEach { print(it) }
+}
+
+@Suppress("UnnecessaryVariable")
+fun createInstance() : Any{
+    val rectangle = Rectangle(4, 3)
+    return rectangle
+}
+
+interface RectanglePrpperties {
+    val isSquare:Boolean
+}
+
+abstract class Shape(val sides: List<Double>) {
+    val perimeter: Double get() = sides.sum()
+
+    abstract fun calculateArea(): Double
+}
