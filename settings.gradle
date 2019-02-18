@@ -1,4 +1,2 @@
 rootProject.name = 'Learning'
 include 'kotlin'
-include 'kotlin'
-
