@@ -3,8 +3,9 @@ package com.kotlin.basic
 import java.io.File
 import java.lang.IllegalStateException
 import java.lang.NumberFormatException
+import java.nio.file.Files
+import java.nio.file.Paths
 import java.time.Instant
-import kotlin.random.Random
 
 /**
  * Idioms
@@ -34,7 +35,7 @@ fun funDefaultValue(a: Int = 0, s: String = "dummy") {
 }
 
 //Filtering list
-fun fileterList() {
+fun filterList() {
     println("filtering list:")
     val r1 = listOf("apple", "baby", "cat", "domain", "entertainment", "fragile").filter { i -> i.length > 5 }
     val r2 = listOf("apple", "baby", "cat", "domain", "entertainment", "fragile").filter { it.length > 5 }
@@ -62,9 +63,9 @@ fun instanceCheck(param: Any) {
 //Traversing a map/list of pairs
 fun traverseCollection() {
     println("Traversing a map/list of pairs:")
-    val list = listOf<Int>(1, 2, 3, 4, 5)
-    val set = setOf<String>("alpha", "beta", "pi")
-    val map = mapOf<Int, String>(Pair(1, "Thor"), Pair(2, "Loki"), Pair(3, "Tony"), Pair(4, "Hulk"))
+    val list = listOf(1, 2, 3, 4, 5)
+    val set = setOf("alpha", "beta", "pi")
+    val map = mapOf(Pair(1, "Thor"), Pair(2, "Loki"), Pair(3, "Tony"), Pair(4, "Hulk"))
     for (i in list) print("$i ")
     for (i in set) print("$i ")
     for ((k, v) in map) print("$k -> $v")
@@ -90,13 +91,13 @@ fun readOnlyCollection() {
     mutableList.add(10)
     println(mutableList)
 
-    val map = mapOf<Int, String>(Pair(1, "Thor"), Pair(2, "Loki"), Pair(3, "Tony"), Pair(4, "Hulk"))
+    val map = mapOf(Pair(1, "Thor"), Pair(2, "Loki"), Pair(3, "Tony"), Pair(4, "Hulk"))
     println(map)
 }
 
 //Accessing map
 fun accessMap() {
-    val map = mapOf<Char, String>(Pair('T', "Thor"), Pair('L', "Loki"), Pair('T', "Tony"), Pair('H', "Hulk"))
+    val map = mapOf(Pair('T', "Thor"), Pair('L', "Loki"), Pair('T', "Tony"), Pair('H', "Hulk"))
     println(map['T'])
 }
 
@@ -126,7 +127,7 @@ object Resource {
 }
 
 fun nonNull() {
-    var files = File(".").listFiles()
+    val files = File(".").listFiles()
     //if not null
     val size = files?.size
 
@@ -178,6 +179,63 @@ fun ifExpression(param: Int) {
     println(v)
 }
 
+//Builder-style usage of methods that return Unit
+fun arrayOfMinusOnes(size: Int): IntArray {
+    val array = IntArray(size).apply { fill(-1) }
+    println("${array.toList()}")
+    return array
+}
+
+//Single expression
+fun theAnswer() = 100
+
+fun transform(color: String): Int = when(color) {
+    "red" -> 0xff0000
+    "green" -> 0x00ff00
+    "blue" -> 0x0000ff
+    else -> 0
+}
+
+//Calling multiple methods on an object instance ('with')
+class Turtle {
+    fun penDown() {}
+    fun penUp() {}
+    fun turn(degrees: Double) {}
+    fun forward(pixels: Double) {}
+}
+
+fun withExpression() {
+    val turtle = Turtle()
+    with(turtle) {
+        turtle.penDown()
+        for (i in 1..4) {
+            forward(100.0)
+            turn(90.0)
+        }
+        penUp()
+    }
+}
+
+//Java 7's try with resources
+fun tryResource() {
+    val stream = Files.newInputStream(Paths.get("./text.txt"))
+    stream.buffered()
+            .reader()
+            .use {
+                reader -> println(reader.readText())
+            }
+}
+
+//Consuming a nullable Boolean
+fun nullableBoolean(param: Int) {
+    val b: Boolean? = param > 5
+    if (b == true) {
+        println("true")
+    } else{
+        print("false or null")
+    }
+}
+
 fun main() {
 
     /**/
@@ -191,7 +249,7 @@ fun main() {
     funDefaultValue(3, "hi")
 
     //filtering list
-    fileterList()
+    filterList()
 
     //instance check
     instanceCheck(5f)
@@ -203,12 +261,14 @@ fun main() {
     //lazy
     lazyProperty()
 
-    //extension funtion
+    //extension function
     space2Underline()
-
-    /**/
 
     //null
     nonNull()
 
+    //Builder-style methods
+    arrayOfMinusOnes(3)
+
+    /**/
 }
