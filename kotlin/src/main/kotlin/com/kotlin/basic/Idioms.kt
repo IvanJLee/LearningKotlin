@@ -1,5 +1,8 @@
 package com.kotlin.basic
 
+import java.io.File
+import java.lang.IllegalStateException
+import java.lang.NumberFormatException
 import java.time.Instant
 import kotlin.random.Random
 
@@ -106,8 +109,79 @@ fun lazyProperty() {
     println("a= $a")
 }
 
+//Extension functions
+fun String.spaceToUnderline() {
+    this.replace(' ', '_')
+}
+
+fun space2Underline() {
+    var s = "A collection of random and frequently used idioms in Kotlin.";
+    s.spaceToUnderline()
+    println(s)
+}
+
+//Singleton
+object Resource {
+    var name = "Name"
+}
+
+fun nonNull() {
+    var files = File(".").listFiles()
+    //if not null
+    val size = files?.size
+
+    //if not null else
+    val childSize = files?.size ?: 0
+
+    //if null
+    val firstFile = files ?: throw IllegalStateException("empty folder")
+
+    //get first item of a possible collection
+    val first = files.firstOrNull() ?: File(".")
+
+    val file = File(".")
+    //execute if not
+    file.listFiles()?.let { println("children count ${files.size}") }
+
+    //map nullable value if not null
+    val parent = file.parent?.let { it } ?: "no parent"
+    println(parent)
+}
+
+//return on when statement
+fun returnWhen(param: Any) : Number {
+    return when(param) {
+        is Number -> param
+        is String -> param.length
+        else -> param.hashCode()
+    }
+}
+
+//try-catch expression
+fun tryCatch(value: String) {
+    val v = try {
+        value.toInt()
+    } catch (e : NumberFormatException) {
+        0
+    }
+    println(v)
+}
+
+fun ifExpression(param: Int) {
+    val v = if (param == 1) {
+        "one"
+    } else if (param == 2) {
+        "two"
+    } else{
+        "Other"
+    }
+    println(v)
+}
 
 fun main() {
+
+    /**/
+
     //data class
     dataClass()
 
@@ -128,4 +202,13 @@ fun main() {
 
     //lazy
     lazyProperty()
+
+    //extension funtion
+    space2Underline()
+
+    /**/
+
+    //null
+    nonNull()
+
 }
