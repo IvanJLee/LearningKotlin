@@ -1,7 +1,7 @@
 package com.kotlin.classes
 
 /**
- * inter face
+ * interface
  *
  * @author  lijun on 2017/6/2 11:52.
  * @version v0.1
