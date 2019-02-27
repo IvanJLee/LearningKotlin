@@ -1,7 +1,5 @@
 package com.kotlin.basic
 
-import com.sun.org.apache.bcel.internal.generic.FLOAD
-
 /**
  * <h2>Basic Types<h2>
  * In Kotlin, everything is an object in the sense that we can call member functions and properties
