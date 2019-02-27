@@ -1,5 +1,7 @@
 package com.kotlin.basic
 
+import com.sun.org.apache.bcel.internal.generic.FLOAD
+
 /**
  * <h2>Basic Types<h2>
  * In Kotlin, everything is an object in the sense that we can call member functions and properties
@@ -59,7 +61,6 @@ fun primitive() {
     val anotherBoxedA: Int? = a
     println(boxedA === primitiveA)// false due to different type
     println(boxedA === anotherBoxedA)// false due to different reference
-
     println()
 
     val b: Int = 127
@@ -88,7 +89,138 @@ fun primitive2() {
     println(boxedB == anotherBoxedB)
 }
 
+// Explicit Conversions
+fun explicitConversions() {
+//    val i: Int = 1
+//    val l: Long = i
+//    println(l == i) //compile error
+
+    val b: Byte = 1
+//    val i: Int = b //compile error
+    val i: Int = b.toInt() // OK: explicitly widened
+    println(i)
+
+    val l: Long = 1L + 2 // OK widened to long
+}
+
+// Operations
+fun operation() {
+    var x = 1
+    x = x shl 2 // 4
+    println(x)
+
+    x = x shr 2 // 1
+    println(x)
+
+    x = x and 0xff // 1
+    println(x)
+}
+
+// Floating Point Numbers Comparison
+fun floatCompare() {
+    val f: Float = Float.NaN
+    println("f : $f")
+    println("f == NaN: ${f == Float.NaN}")
+    println("NaN == NaN: ${Float.NaN == Float.NaN}")
+
+    println("NaN < POSITIVE_INFINITY: ${Float.NaN < Float.POSITIVE_INFINITY}")
+    println("NaN == POSITIVE_INFINITY: ${Float.NaN == Float.POSITIVE_INFINITY}")
+    println("NaN > POSITIVE_INFINITY: ${Float.NaN > Float.POSITIVE_INFINITY}")
+    val nz: Float = -0.0f
+    val pz: Float = 0.0f
+    println("-0.0f < 0.0f: ${nz < pz}")
+    println("-0.0f == 0.0f: ${nz == pz}")
+}
+
+// Characters
+fun charaters() {
+    val c: Char = 'A'
+//    println(c == 65) // compile error, Char is not treated as numbers
+    if (c !in 'a'..'z') {
+        println("not lower case characters")
+    }
+
+    //to ASCII
+    println(c.toInt())
+}
+
+// Booleans
+fun booleans() {
+    var b1: Boolean = true
+    var b2 = false
+
+    println(b1 && b2)
+    println(b1 and b2)
+    println(b1.or(b2))
+    println(b1.toString())
+}
+
+// Arrays
+fun arrays() {
+    val array = arrayOf(1, 2, 3, 4)
+    println("${array}") // print array.toString
+    array.forEach { println(it) }
+    println()
+
+    val fa = floatArrayOf(1f, 3f, 5f)
+    fa.forEach { println(it) }
+    println()
+
+    val asc = Array(5, { i -> i * i })
+    asc.forEach { println(it) }
+}
+
+// Unsigned numbers
+@ExperimentalUnsignedTypes
+fun unsignedNumbers() {
+    val a: UInt = UInt.MAX_VALUE;
+    println(a)
+
+    val b: UByte = 1u
+
+    val x = 42u
+    val y = 0xff_ffu
+}
+
+// Strings
+fun strings() {
+    var s = "abcdef"+1+2+3
+    for (c in s) {
+        println(c)
+    }
+    println()
+
+    //traverse with forEach
+    s.forEach { c -> println(c) }
+
+    // no escaped strings
+    s = """
+        var s = "abcdef"+1+2+3
+        for (c in s) {
+            println(c)
+        }
+    """
+    println("\nno escaped strings:")
+    println(s)
+    println("\ntrimIndent:\n")
+    println(s.trimIndent())
+    println("\ntrimMargin:\n")
+    println(s.trimMargin())
+}
+
 fun main() {
 
-    primitive2()
+//    operation()
+
+//    floatCompare()
+
+//    charaters()
+
+//    booleans()
+
+//    arrays()
+
+//    unsignedNumbers()
+
+//    strings()
 }
