@@ -55,7 +55,7 @@ class Property {
             return _table ?: throw AssertionError("Set to null by another thread")
         }
 
-    // lateinit var
+    // lateinit var. The type of the property or variable must be non-null, and it must not be a primitive type.
     lateinit var lazyVal: Adress
 }
 
@@ -77,6 +77,8 @@ fun main() {
     property.counter = 2
 //    property.c = 3
     foo()
+
+    // Accessing a lateinit property before it has been initialized throws a special exception
     try {
         println(property.lazyVal)
     } catch (e: Exception) {
