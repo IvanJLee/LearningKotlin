@@ -28,7 +28,7 @@ open class Objects(n: Int) {
     }
 
     companion object Factory {
-        fun create(): Objects = Objects()
+        fun create(): Objects = Objects(1)
     }
 
 }
