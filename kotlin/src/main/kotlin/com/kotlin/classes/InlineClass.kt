@@ -2,8 +2,6 @@
 
 package com.kotlin.classes
 
-import sun.tools.tree.InlineMethodExpression
-
 /**
  * Inline classes
  *
